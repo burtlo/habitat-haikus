@@ -1,0 +1,39 @@
+function dkr {
+  local package=$(ls -t results/$HAB_ORIGIN* | head -1)
+  echo "Creating Docker Image for $package"
+  hab pkg export docker $package
+}
+
+function start {
+  echo "Running $1"
+  hab svc start $HAB_ORIGIN/$1 --bind=database:mongodb.default
+}
+
+function stop {
+  echo "Stopping $1"
+  hab svc stop $HAB_ORIGIN/$1
+}
+
+function config {
+  hab pkg config $1
+}
+
+function get-mongo {
+  hab pkg install core/mongodb
+  hab svc start core/mongodb
+}
+
+function get {
+  echo "Getting $1"
+  hab pkg install -b core/$1
+}
+
+function go {
+
+  get-mongo
+  build
+  start haikus
+}
+
+
+#export HAB_DOCKER_OPTS="-p 8000:8000"

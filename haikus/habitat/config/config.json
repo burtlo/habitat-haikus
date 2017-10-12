@@ -1,0 +1,8 @@
+{
+  "mongo": {
+    {{~#eachAlive bind.database.members as |member|}}
+      "host" : "{{member.sys.ip}}",
+      "port"   : "{{member.cfg.port}}"
+    {{~/eachAlive}}
+    }
+}

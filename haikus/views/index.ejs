@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Angular App!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="/javascripts/angularApp.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  </head>
+
+  <body>
+
+    <section class="logos" ng-app="haiku" ng-controller="MainCtrl">
+      <div class="haiku" ng-repeat="haiku in haikus">
+        <div class="haiku-line">{{haiku.first}}</div>
+        <div class="haiku-line">{{haiku.second}}</div>
+        <div class="haiku-line">{{haiku.third}}</div>
+      </div>
+
+      <form ng-submit="addHaiku()">
+        <input class="haiku-input short" type="text" ng-model="first" ng-keyup="countFirstLine()"></input>
+        <div class="line-count" ng-bind="firstSylCount">0</div>
+
+        <input class="haiku-input long" type="text" ng-model="second" ng-keyup="countSecondLine()"></input>
+        <div class="line-count" ng-bind="secondSylCount">0</div>
+
+        <input class="haiku-input short" type="text" ng-model="third" ng-keyup="countThirdLine()"></input>
+        <div class="line-count" ng-bind="thirdSylCount">0</div>
+
+        <button type="submit">Post</button>
+      </form>
+    </section>
+
+    <footer>
+      <img class="habicat-jumping" src="images/image-cat-jumping.svg" />
+      <img class="habicat-set" src="images/image-cat-set.svg" />
+    </footer>
+
+  </body>
+</html>
