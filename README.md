@@ -2,6 +2,8 @@
 
 This web application allows you to compose haikus.
 
+![Website](https://user-images.githubusercontent.com/244426/31552127-27faf5fc-affc-11e7-9477-19d001a174ea.png)
+
 ## Build
 
 Install Habitat
